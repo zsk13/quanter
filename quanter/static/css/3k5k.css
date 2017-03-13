@@ -1,0 +1,42 @@
+.dis-con{
+    width: 60%;
+    margin-bottom: 10px;
+}
+
+ .form-control{
+    width: 50%;
+    display: inline;
+    margin-bottom: 20px;
+}
+
+#loopback{
+     float: right;margin-right: 33%
+ }
+ #confirm{
+     float: right;margin-top: 10px
+ }
+@media (max-width: 768px) {
+    .form-control{
+        width: 70%;
+        display: inline;
+        margin-bottom: 20px;
+    }
+    #loopback{
+        float: right;
+        margin-right: 0
+    }
+    .sm-p{
+        margin-top: 20px;
+    }
+}
+
+
+.mid-div{
+    margin-top: 20px;
+}
+#kdiv{
+    text-align: center;
+}
+#kline{
+  height: 400px;
+}

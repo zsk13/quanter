@@ -1,0 +1,60 @@
+.time-sm{
+    width: 110px;
+    display: inline;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.bsmodel{
+    padding-left: 0px;
+    margin-top: 20px;
+}
+.bsmodel  input{
+    width: 200px;
+}
+
+@media (max-width: 768px) {
+    .che-sm{
+        margin-left: 5px;
+    }
+    .media-sm {
+       margin-top: 20px;
+       margin-left: 0px;
+
+   }
+    .cbutton{
+        clear: right;
+        float: right;
+        margin-right: 20px;
+    }
+
+    #confirm{
+        margin-top: 20px;
+    }
+
+    div.col-xs-12 p.titleword{
+margin-top: 15px;
+    }
+
+    #start{
+        width: 80px;
+    }
+    #end{
+        width: 80px;
+    }
+    #confirm-sm{
+        width: 55px;
+
+    }
+}
+.media-sm {
+  margin-right: 15px;
+
+}
+
+.cbutton{
+    display: inline;width: 120px
+}
+#folding{
+    height: 540px ;margin-top: 20px
+}
+

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}不知名策略{% endblock %}
+
+{% block container %}
+ <div class="container mycontainer"  >
+
+    <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        <p class="titleword">股票池</p>
+        <table id="tablepool"></table>
+    </div>
+
+    <div class="col-md-8 col-lg-8 col-xs-12 col-sm-12">
+        <p class="titleword">检测</p>
+        <div style="overflow: hidden">
+
+            时间:<input type="text"  class="form-control time-sm  "  id="start"   > —— <input type="text"  class="form-control time-sm"  id="end"   >
+
+                <select class="selectpicker  dis-con media-sm hidden-xs hidden-sm" data-width="182px" title="您预设的股票组">
+                <option>自定义股票组1</option>
+                <option>自定义股票组2</option>
+                <option>自定义股票组3</option>
+            </select>
+
+            <button type="button" class="btn btn-primary cbutton hidden-xs hidden-sm" id="confirm" >校验</button>
+            <br>
+        <div class="col-md-6 col-lg-6 bsmodel" >  买入条件:<input type="text"  class="form-control time-sm  che-sm"     ></div>
+        <div class="col-md-6 col-lg-6 bsmodel" >  卖出条件:<input type="text"  class="form-control time-sm  che-sm"     ></div>
+
+            <select class="selectpicker  dis-con media-sm visible-xs visible-sm" data-width="182px" title="您预设的股票组">
+                <option>自定义股票组1</option>
+                <option>自定义股票组2</option>
+                <option>自定义股票组3</option>
+            </select>
+
+            <button type="button" class="btn btn-primary cbutton visible-xs visible-sm" id="confirm-sm" style="display: inline;width: 120px">校验</button>
+        </div>
+
+
+        <div id="folding" >
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="../static/js/stategtTable.js"></script>
+<script src="../static/js/folding.js"></script>
+{% endblock %}

@@ -20,13 +20,13 @@ class Stock(models.Model):
 
 class DayData(models.Model):
     date = models.DateField()
-    open_price = models.FloatField()
+    open = models.FloatField()
     high = models.FloatField()
     low = models.FloatField()
     close = models.FloatField()
-    trade_status = models.CharField(max_length=50)
-    volume = models.IntegerField()
-    amt = models.IntegerField()
+    status = models.CharField(max_length=50)
+    volume = models.FloatField()
+    amt = models.FloatField()
     stock = models.ForeignKey(Stock)
 
     def __unicode__(self):

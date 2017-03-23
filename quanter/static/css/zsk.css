@@ -1,0 +1,19 @@
+.date-input{
+    width: 110px;
+    display: inline;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.stock-input{
+    width: 110px;
+    display: inline;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.submit-btn{
+    height: 28px;
+    width: 100px;
+    margin-bottom: 1px;
+}

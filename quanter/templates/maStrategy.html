@@ -17,27 +17,20 @@
 
         <div style="overflow: hidden">
             时间:<input class="date-input"  id="start"   > —— <input type="text"  class="date-input"  id="end"   >
-                测试股票:<input type="text" id="code" class="stock-input">
-                <button type="button" class="btn btn-primary submit-btn" id="confirm" onclick="check()">校验</button>
+                测试股票:<input type="text"  class="stock-input">
+                <button type="button" class="btn btn-primary submit-btn" id="confirm" >校验</button>
         </div>
 
 
-        <div id="backTest" style = "width:750px;height:400px">
+        <div id="folding" >
 
         </div>
     </div>
 </div>
 {% endblock %}
 
-{% block datajs %}
-<script type="text/javascript">
-    var dateData = {{ dateData|safe }};
-    var yieldRateData = {{ yieldRateData|safe }};
-    var standardData = {{ standardData|safe }};
-</script>
-{% endblock %}
-
 {% block js %}
 <script src="../static/js/stategtTable.js"></script>
-<script src="../static/js/backTest.js"></script>
+<script src="../static/js/folding.js"></script>
 {% endblock %}
+{% extends "base.html" %}

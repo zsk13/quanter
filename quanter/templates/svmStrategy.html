@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}svm策略{% endblock %}
+
+{% block css %}<link rel="stylesheet" type="text/css" href="../static/css/strategy.css">{% endblock %}
+
+{% block container %}
+ <div class="container mycontainer"  >
+
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+        <p class="titleword">训练</p>
+        <div style="overflow: hidden; margin-left:45px">
+            时间:&nbsp&nbsp
+            <select id='year'></select>年&nbsp&nbsp
+            第<select id='quarter'></select>季度
+            <button type="button" class="btn btn-primary submit-btn" id="confirm" style = 'margin-left:40px' onclick="train()">训练</button>
+        </div>
+    </div>
+    <hr>
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style = 'margin-top:50px'>
+        <p class="titleword">候选股票</p>
+        <table id="chosenStock"></table>
+    </div>
+    <hr>
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+        <p class="titleword">回测结果</p>
+        <div style="overflow: hidden">
+           时间:<input class="date-input"  id="start"   > —— <input type="text"  class="date-input"  id="end"   >
+                测试股票:<input type="text" id="code" class="stock-input">
+                <button type="button" class="btn btn-primary submit-btn" id="confirm" onclick="check()">校验</button>
+        </div>
+        <div id="backTest" style = "width:750px;height:400px;margin-top: 30px">
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<!-- <script src="../static/js/stategtTable.js"></script>-->
+<script src="../static/js/svm.js"></script> 
+<script src="../static/js/backTest.js"></script>
+{% endblock %}

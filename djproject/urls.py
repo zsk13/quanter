@@ -30,3 +30,14 @@ urlpatterns += patterns('',
 urlpatterns += patterns('quanter.views',
     (r'^3k5k/$', 'show'),
 )
+
+urlpatterns += patterns('quanter.views',
+    (r'^maStrategy/$', 'maStrategy'),
+    (r'^backTest/$', 'backTest'),
+)
+
+urlpatterns += patterns('quanter.views',
+    (r'^svmStrategy/$', 'svmStrategy'),
+    (r'^svmStrategy/training$', 'svm_training'),
+    # (r'^backTest/$', 'backTest'),
+)

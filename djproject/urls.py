@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     (r'hello/(\d+)/$',hello1),
     (r'^extend/$',views),
     (r'^form/$',form),
+    (r'^initData/$',initData),
 
     url(r'^admin/', include(admin.site.urls)),
 

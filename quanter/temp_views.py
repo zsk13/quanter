@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # Create your views here.
 from django.http import HttpResponse, Http404
 from django import template
@@ -5,7 +6,8 @@ from django.shortcuts import render_to_response
 from quanter.models import *
 from quanter.forms import *
 import csv
-import os 
+import os
+
 def hello(request):
     return HttpResponse("hello world")
 
@@ -35,7 +37,7 @@ def jsonData(request, id):
     return JsonResponse()
 
 def initData(request):
-    path = "/home/zsk/django/data/"
+    path = "E:/FinalDesign/daydata/"
     for parent,dirnames,filenames in os.walk(path): 
         for name in filenames:
             csv_reader = csv.reader(open(path+name))
@@ -48,17 +50,19 @@ def initData(request):
             for row in csv_reader:
                 if row[0] == "date":
                     continue
+                if row[0] < "2016-01-01":
+                    continue
                 dayData = DayData()
-                print(row)
-                if(row[1]=='NA'):
+                if(row[6]=='NA'):
                     continue
                 dayData.date = row[0]
-                dayData.open_price = row[1]
+                dayData.open = row[1]
                 dayData.high = row[2]
                 dayData.low = row[3]
                 dayData.close = row[4]
-                dayData.trade_status = ""
-                dayData.volume = 1
-                dayData.amt = 1
+                dayData.status = row[5].decode('gb2312').encode('utf8')
+                dayData.volume = row[6]
+                dayData.amt = row[7]
                 dayData.stock = stock
                 dayData.save()
+

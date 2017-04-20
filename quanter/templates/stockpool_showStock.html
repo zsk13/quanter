@@ -1,0 +1,30 @@
+{% extends "stockpool.html" %}
+
+{% block title %}查看股票{% endblock %}
+
+
+{% block rightContainer %}
+
+    <p class="titleword">搜索股票</p>
+    股票代码:<input type="text" id="code">
+    <button style = "margin-left:60px" type="button" class="btn btn-primary submit-btn" id="confirm" onclick="searchStock()">搜索</button>
+    <p class="titleword" style = "margin-top:50px">K线展示图</p>
+    <div id="kline" style = "height:400px; margin-bottom: 30px"></div>
+    <div style = "text-align:right">
+    <button style = "" type="button" class="btn btn-primary submit-btn" id="addStock" onclick="addStock()">加入股票池</button>
+    </div>
+
+{% endblock %}
+
+
+
+{% block datajs %}
+<script type="text/javascript">
+    var rawData = {{ list|safe }};
+</script>
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script src="../static/js/Kline.js"></script>
+{% endblock %}

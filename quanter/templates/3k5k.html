@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "basePage.html" %}
 
 {% block title %}3K/5K战法{% endblock %}
 
@@ -68,12 +68,12 @@
 {% block datajs %}
 <script type="text/javascript">
     var rawData = {{ list|safe }};
-    var stocks = {{ stocks|safe }};
-    var recommends = {{ recommendData|safe }};
+    // var stocks = {{ stocks|safe }};
+    // var recommends = {{ recommendData|safe }};
 </script>
 {% endblock %}
 
 {% block js %}
-<script src="../static/js/table.js"></script>
+<!-- <script src="../static/js/table.js"></script> -->
 <script src="../static/js/Kline.js"></script>
 {% endblock %}

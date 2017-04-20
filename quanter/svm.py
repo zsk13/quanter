@@ -5,18 +5,21 @@ from sklearn import svm
 from sqlalchemy import create_engine
 from models import *
 from  datetime  import  *  
+from sklearn.model_selection import GridSearchCV
+from sklearn.decomposition import PCA
+from sklearn import preprocessing 
 
-class SVMStrategy(object):
-    def __init__(self):
-        pass
+# class SVMStrategy(object):
+#     def __init__(self):
+#         pass
 
-    def svmTraining(self, x, y):
-        self.clf = svm.SVC() 
-        self.clf.fit(x, y)
+#     def svmTraining(self, x, y):
+#         self.clf = svm.SVC() 
+#         self.clf.fit(x, y)
 
-    def svmPredict(self, x):
-        y = self.clf.predict(x)
-        return y
+#     def svmPredict(self, x):
+#         y = self.clf.predict(x)
+#         return y
 
 class Data(object):
     def __init__(self, year, quarter):
@@ -162,6 +165,26 @@ class Data(object):
                 f.save()
         return result
 
-if __name__ == "__main__":
-    data = Data(2014,1)
-    print data.get_report_data_from_db()
+
+class GridSearch(object):
+    def getClassifier(self, x, y):
+        parmeters = {'C':[1,2,4,8,16,32], 'gamma':[0.125, 0.25, 0.5 ,1, 2, 4, 8]}
+        svc = svm.SVC()
+        clf = GridSearchCV(svc, parmeters, n_jobs=-1, cv=3)
+        clf.fit(x,y)
+        return clf
+
+    def defaultData(self, code="600317"):
+        s = StockData()
+        if code=='399300':
+            data = s.get_hs300_data()
+        else:
+            data = s.getData(code)
+
+        scaler = preprocessing.StandardScaler().fit(data[0])
+        normaldata = scaler.transform(data[0])
+
+        pca=PCA(n_components=5)
+        newData=pca.fit_transform(normaldata)
+        return newData,data[1],data[2]
+

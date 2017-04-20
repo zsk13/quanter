@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'users',
     'quanter',
 )
 
@@ -89,3 +91,12 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__),'templates'),)
 
 STATICFILES_DIRS = (os.path.join(os.path.dirname(__file__), 'static'),)
+
+AUTH_USER_MODEL = 'users.User'
+
+SITE_ID = 1
+
+USERS_VERIFY_EMAIL = False
+
+LOGIN_REDIRECT_URL = '/index'
+LOGOUT_REDIRECT_URL = '/login'

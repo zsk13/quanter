@@ -5,7 +5,7 @@ from quanter.models import *
 from quanter.forms import *
 import json
 
-def show(request,code='SH603901'):
+def show(request,code='603999'):
     stock = Stock.objects.get(code=code)
     stocks = Stock.objects.all()
     stockData = []
@@ -18,10 +18,8 @@ def show(request,code='SH603901'):
 
     rawData = []
     for dayData in dayDatas:
-        rawData.append([str(dayData.date),dayData.open_price,dayData.close,dayData.high,dayData.low])
+        rawData.append([str(dayData.date),dayData.open,dayData.close,dayData.high,dayData.low])
     
     return render_to_response("3k5k.html",{
             'list': json.dumps(rawData),
-            'stocks': json.dumps(stockData),
-            'recommendData': json.dumps(recommendData)
     })

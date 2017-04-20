@@ -1,36 +1,26 @@
-{% extends "base.html" %}
+{% extends "basePage.html" %}
 
-{% block title %}不知名策略{% endblock %}
+{% block title %}双均线策略{% endblock %}
 
 {% block css %}<link rel="stylesheet" type="text/css" href="../static/css/strategy.css">{% endblock %}
 
 {% block container %}
  <div class="container mycontainer"  >
-
-    <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
-        <p class="titleword">股票池</p>
-        <table id="tablepool"></table>
+    <div class="col-md-12">
+        <h2>策略描述</h2>
+        <p>双均线策略，设置n天移动平均线为短期移动平均线，m天移动平均线为长期移动平均线。短期移动平均线向上穿过长期移动平均线为买入点，向下穿过长期移动平均线为卖出点。</p>
     </div>
-
-    <div class="col-md-8 col-lg-8 col-xs-12 col-sm-12">
-        <p class="titleword">检测</p>
-
-        <div style="overflow: hidden">
-            时间:<input class="date-input"  id="start"   > —— <input type="text"  class="date-input"  id="end"   >
-                测试股票:<input type="text"  class="stock-input">
-                <button type="button" class="btn btn-primary submit-btn" id="confirm" >校验</button>
-        </div>
-
-
-        <div id="folding" >
-
-        </div>
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+        {% block maStrategyTest %}{% endblock %}
+        
     </div>
+    <hr>
+    
+
 </div>
 {% endblock %}
 
+
 {% block js %}
-<script src="../static/js/stategtTable.js"></script>
-<script src="../static/js/folding.js"></script>
+<script src="../static/js/date.js"></script>
 {% endblock %}
-{% extends "base.html" %}

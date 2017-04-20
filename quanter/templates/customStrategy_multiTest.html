@@ -1,0 +1,32 @@
+{% extends "customStrategy.html" %}
+
+{% block customStrategyTest %}
+    <div class="navbar-default">
+        <ul class="nav nav-tabs" style = "font-size:30px">
+          <li role="presentation" ><a href="/customStrategy/singleTest">个股回测</a></li>
+          <li role="presentation" class="active"><a href="/customStrategy/multiTest">批量回测</a></li>
+        </ul>
+    </div>
+    <h3>参数设置</h3>
+    时间:<input class="date-input"  id="start"   > —— <input type="text"  class="date-input"  id="end"   >
+    <br>
+   <div style = "margin-top:20px">
+    买入条件: <input type="text" id="buy"  style = "width:100%">
+    </div>
+    <div style = "margin-top:20px">
+    卖出条件: <input type="text" id="sell" style = "width:100%">
+            
+    <div style = "margin-top:20px">
+        <button style = "" type="button" class="btn btn-primary submit-btn" id="confirm" onclick="multiTest()">校验</button>
+    <div>
+    <h3>回测结果</h3>
+    <div style = " margin-bottom: 300px;width:400px">
+    <table id="testResult"></table>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+ {{ block.super }}
+<script src="../static/js/customMultiTest.js"></script>
+{% endblock %}

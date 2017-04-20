@@ -1,6 +1,22 @@
-$(function() {
-    var myChart = echarts.init(document.getElementById('kline'));
+function searchStock(){
+    var code = $("#code").val();
+    $.get("/stockpool/searchStock?code="+code,function(data,status){
+        
+        var myChart2 = echarts.getInstanceByDom(document.getElementById('kline'));
 
+        var dates = data.map(function(item) {
+            return item[0]
+        });
+        var data = data.map(function(item) {
+            return [+item[1], +item[2], +item[3], +item[4]]
+        });
+        option = getKLineOption(dates,data);
+        myChart2.setOption(option,true)
+    });
+}
+
+
+function getKLineOption(dates,data){
     function calculateMA(dayCount, data) {
         var result = [];
         for (var i = 0, len = data.length; i < len; i++) {
@@ -16,12 +32,6 @@ $(function() {
         }
         return result
     }
-    var dates = rawData.map(function(item) {
-        return item[0]
-    });
-    var data = rawData.map(function(item) {
-        return [+item[1], +item[2], +item[3], +item[4]]
-    });
     var option = {
         backgroundColor: '#21202D',
         legend: {
@@ -146,8 +156,24 @@ $(function() {
             }
         }]
     };
-    $(window).resize(function() {
-        myChart.resize()
-    });
-    myChart.setOption(option)
+    return option;
+}
+
+$(function() {
+    var myChart = echarts.init(document.getElementById('kline'));
+
+
+    // var dates = rawData.map(function(item) {
+    //     return item[0]
+    // });
+    // var data = rawData.map(function(item) {
+    //     return [+item[1], +item[2], +item[3], +item[4]]
+    // });
+    // option = getKLineOption(dates,data);
+    
+    // $(window).resize(function() {
+    //     myChart.resize()
+    // });
+    // myChart.setOption(option,true);
 });
+

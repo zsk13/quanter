@@ -3,7 +3,7 @@ from django import template
 from django.shortcuts import render_to_response
 from quanter.models import *
 from quanter.forms import *
-from sklearn import svm
+#from sklearn import svm
 import json
 import numpy as np
 from quanter.backTesting import *

@@ -85,7 +85,7 @@ $(function() {
         striped: true,
         sidePagination: "client",
         pageNumber: 1,
-        height: 187,
+        height: 400,
         clickToSelect: true,
         columns: [{
             checkbox: true
@@ -96,8 +96,8 @@ $(function() {
             field: 'name',
             title: '股票名称'
         }, {
-            field: 'recommend',
-            title: '推荐等级'
+            field: 'profit',
+            title: '收益率(%)'
         }],
         data:recommends
         // data: [{

@@ -1,4 +1,3 @@
-import tushare
 import pandas
 import numpy as np
 

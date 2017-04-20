@@ -8,14 +8,13 @@
 {% block container %}
     <div class="container mycontainer"  >
         <div class="col-md-5 col-lg-5  col-md-offset-1 col-lg-offset-1 col-xs-12 col-sm-12"  >
-            <p class="titleword">3K/5K策略</p>
-            <p >3根K线看转折,5根K线定趋势</p>
+            <p class="titleword" id="title">3K/5K策略</p>
+            <p> 3根K线看转折,5根K线定趋势</p>
             <div style="margin-bottom: 10px"> 股票范围: <select class="selectpicker  dis-con " title="您预设的股票组">
                 <option>自定义股票组1</option>
                 <option>自定义股票组2</option>
                 <option>自定义股票组3</option>
             </select></div>
-
 
         <div>
        开始时间:
@@ -23,21 +22,40 @@
             结束时间:
           <input type="text"  class="form-control "  id="end"   ><br>
 
-                <button type="button" class="btn btn-primary" id="loopback" >回测</button>
+                <!--<button type="button" class="btn btn-primary" id="periodConfirm" onclick="confirmPeriod()">确定</button>-->
             </div>
 
         </div >
-        <div class="col-md-6 col-lg-6 " >
-            <p  class="titleword" style="clear: both">回测结果</p>
-            <div style="position: relative">
-            <table id="table"></table>
-                <button type="button" class="btn btn-primary" id="confirm" >加入到股票池</button>
-            </div>
+
+        <div class="col-md-6 col-lg-6" >
+            <p  class="titleword" style="clear: both">参数设置</p>
+            长阳线:
+            <input type="text" class="form-control" id="long" ><br>
+            短阳线:
+            <input type="text" class="form-control" id="short" ><br>
+            中阳线:
+            <input type="text" class="form-control" id="mid" ><br>
+            十字星:
+            <input type="text" class="form-control" id="mini" ><br>
+            <!--<a href="/3k5k/getRecommendStock?start=2016-01-01&end=2016-12-31&long=0.036&short=0.15&mid=0.035&mini=0.005"><button type="button" class="btn btn-primary" id="check" >检验</button></a>-->
         </div>
     </div>
 
 
-    <div class="container mycontainer mid-div"  >
+    <div class="container mycontainer mid-div" >
+        <div class="col-md-4 col-lg-4  col-md-offset-1 col-lg-offset-1 col-xs-12 col-sm-12" >
+            <p  class="titleword" style="clear: both">推荐股票</p>
+            <div style="position: relative">
+            <table id="table"></table>
+                <button type="button" class="btn btn-primary" id="addStock" onclick = "addStocks()">加入到股票池</button>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6  col-md-offset-1 col-lg-offset-1 col-xs-12 col-sm-12">
+            <p class="titleword">股票池</p>
+            <table id="tablepool"></table>
+            <button type="button" class="btn btn-primary" id="loopback" onclick = "backTest()">回测</button>
+        </div>
+        <!--
         <div class="col-md-4 col-lg-4  col-md-offset-1 col-lg-offset-1 col-xs-12 col-sm-12"  >
             <p class="titleword">股票池</p>
             <table id="tablepool"></table>
@@ -51,13 +69,14 @@
             <table id="tablesale"></table>
 
         </div >
+        -->
 
     </div>
 
 
     <div class="container mycontainer mid-div"  >
         <div class="col-md-12 col-lg-12   col-xs-12 col-sm-12" id="kdiv">
-            <p class="titleword">K线展示图</p>
+            <p class="titleword">回测展示图</p>
             <div id="kline" ></div>
 
         </div >
@@ -70,10 +89,11 @@
     var rawData = {{ list|safe }};
     var stocks = {{ stocks|safe }};
     var recommends = {{ recommendData|safe }};
+    var paraList = {{ paraList|safe }}
 </script>
 {% endblock %}
 
 {% block js %}
 <script src="../static/js/table.js"></script>
-<script src="../static/js/Kline.js"></script>
+<script src="../static/js/3k5k.js"></script>
 {% endblock %}

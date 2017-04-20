@@ -11,7 +11,8 @@ urlpatterns = patterns('',
     (r'hello/(\d+)/$',hello1),
     (r'^extend/$',views),
     (r'^form/$',form),
-    (r'^initData/$',initData),
+    (r'^initKDJData/$',initKDJData),
+    (r'^filter/$',filterStockPool),
 
     url(r'^admin/', include(admin.site.urls)),
 
@@ -30,6 +31,10 @@ urlpatterns += patterns('',
 
 urlpatterns += patterns('quanter.views',
     (r'^3k5k/$', 'show'),
+    url(r'^3k5k/backTest$', 'backTest_3k5k'),
+    url(r'^3k5k/getrecord$', 'getRecord'),
+    url(r'^3k5k/storeRecommendStocks$', 'storeRecommendStocks'),
+
 )
 
 urlpatterns += patterns('quanter.views',

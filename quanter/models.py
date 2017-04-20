@@ -14,6 +14,7 @@ class Mysite(models.Model):
 class Stock(models.Model):
     code = models.CharField(max_length=50,primary_key=True)
     name = models.CharField(max_length=50)
+    isInPool = models.BooleanField(default=1)
 
     def __unicode__(self):
         return self.name
@@ -31,6 +32,32 @@ class DayData(models.Model):
 
     def __unicode__(self):
         return self.trade_status
+
+class MAData(models.Model):
+    date = models.DateField()
+    stock = models.ForeignKey(Stock)
+    ma5 = models.FloatField()
+    ma10 = models.FloatField()
+    ma20 = models.FloatField()
+    ma60 = models.FloatField()
+    ma120 = models.FloatField()
+
+    def __unicode__(self):
+        return self.ma5
+
+class KDJData(models.Model):
+    date = models.DateField()
+    stock = models.ForeignKey(Stock)
+    RSV = models.FloatField()
+    K = models.FloatField()
+    D = models.FloatField()
+    J = models.FloatField()
+
+class ProfitRateData(models.Model):
+    year = models.IntegerField()
+    stock = models.ForeignKey(Stock)
+    strategy = models.CharField(max_length=50)
+    profitRate = models.FloatField()
 
 class Foundamental(models.Model):
     code = models.CharField(max_length=50)

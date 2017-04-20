@@ -1,0 +1,18 @@
+{% extends "basePage.html" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="../static/css/accounts.css">
+{% endblock %}
+{% block container %}
+<div class="container">
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+		{% endfor %}
+	{% endif %}
+	{% block content %}
+		
+	{% endblock content %}
+</div>
+{% endblock %}
+

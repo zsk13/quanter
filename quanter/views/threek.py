@@ -8,7 +8,7 @@ from quanter.threekStrategy import ThreekStrategy
 
 import datetime
 
-def show(request,code='SH603901'):
+def show(request,code='603999'):
     stock = Stock.objects.get(code=code)
     stockData = []
 
@@ -85,5 +85,3 @@ def getRecord(request):
     threek = ThreekStrategy()
 
     return HttpResponse(threek.storeRecommendStock(paraList,start,end))
-
-

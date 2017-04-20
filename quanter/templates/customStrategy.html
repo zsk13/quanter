@@ -1,0 +1,28 @@
+{% extends "basePage.html" %}
+
+{% block title %}自定义策略{% endblock %}
+
+{% block css %}<link rel="stylesheet" type="text/css" href="../static/css/strategy.css">{% endblock %}
+
+{% block container %}
+ <div class="container mycontainer"  >
+    <div class="col-md-12">
+        <h2>策略描述</h2>
+        <p>允许用户自定义买入条件和卖出条件，进行回测，可用关键字为close,open,high,low,MA,BIAS,PSY,RSI,WR
+            <br>示例:&nbsp买入条件:MA(5) &lt close <br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp卖出条件:MA(5) &gt close
+        </p>
+    </div>
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+        {% block customStrategyTest %}{% endblock %}
+        
+    </div>
+    <hr>
+    
+
+</div>
+{% endblock %}
+
+
+{% block js %}
+<script src="../static/js/date.js"></script>
+{% endblock %}

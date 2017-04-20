@@ -1,0 +1,40 @@
+.form-wrapper{
+    color: #ffffff;
+    height: 490px;
+    margin-left: 25%;
+    width: 41.66666667%;
+}
+
+.form-wrapper input{
+    color: #ffffff;
+}
+
+.form-wrapper p{
+
+    display : inline;
+
+    margin-left:120px;
+}
+.form-wrapper a{
+    color: #ffffff;
+    margin-top: 40px;
+}
+
+.field-wrapper{
+    text-align: right;
+    margin-top: 30px;
+}
+
+.button-wrapper{
+    text-align: right;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+.button-wrapper input{
+    border-radius: 4px;
+    background-color: #1B9AF7;
+    border-color: #1B9AF7;
+}
+

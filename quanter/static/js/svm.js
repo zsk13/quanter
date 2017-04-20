@@ -1,130 +1,40 @@
-$(function() {
-    window.onload=function(){ 
-    //设置年份的选择 
-        var myDate= new Date(); 
-        var startYear=2000;
-        var endYear=myDate.getFullYear(); 
-        var obj=document.getElementById('year') 
-        for (var i=startYear;i<=endYear;i++) 
-        { 
-            obj.options.add(new Option(i,i)); 
-        } 
-        obj.options[14].selected=1;
-
-        var quarter=document.getElementById('quarter') 
-        quarter.options.add(new Option('一',1));
-        quarter.options.add(new Option('二',2));
-        quarter.options.add(new Option('三',3));
-        quarter.options.add(new Option('四',4));
-    } 
-
-
-
-})
-
 function train(){
+    var start = $("#start").val();
+    var end = $("#end").val();
+    var code = $("#code").val();
+    var verifystart = $("#verifystart").val();
+    var verifyend = $("#verifyend").val();
+    $.get("/svmStrategy/result?code="+code+"&start="+start+"&end="+end+"&verifystart="+verifystart+"&verifyend="+verifyend,function(data,status){
 
-    var year = $("#year").val();
-    var quarter = $("#quarter").val();
-    $.get("/svmStrategy/training?year="+year+"&quarter="+quarter,function(data,status){
-        datas = []
-        codes = data['resultCode'];
-        names = data['resultName'];
-        console.log(typeof(codes));
-        for(var i=0;i<codes.length;i++){
-            datas.push({id:codes[i],name:names[i]});
+        console.log(data);
+        dataarray = []
+        for(var d in data){
+            d = data[d]
+            var temp = {}
+            temp.code = d[0]
+            temp.ratio = Number(d[1]*100).toFixed(2)+'%'
+            dataarray.push(temp)
         }
-        $('#chosenStock').bootstrapTable({
+
+        $('#testResult').bootstrapTable({
         striped: true,
         sidePagination: "client",
         pageNumber: 1,
         pageSize: 10,
         pageList: [10, 25, 50, 100],
-        height: 400,
         clickToSelect: true,
         columns: [{
-            field: 'id',
-            title: '股票代码'
+            field: 'code',
+            title: 'code',
+            width:200
         }, {
-            field: 'name',
-            title: '股票名称'
+            field: 'ratio',
+            title: '收益率',
+            width:200
         }],
-        // data: stocks
-        data: datas
-        
-    });
+        data: dataarray        
+        });
+        $('#testResult').bootstrapTable("load",dataarray);
     }); 
    
-}
-
-function test(){ 
-    var start = $("#start").val();
-    var end = $("#end").val();
-    var code = $("#code").val();
-
-    var myChart = echarts.init(document.getElementById('TestResult'));
-     option = {
-        title : {
-            text: 'backtest',
-        },
-        tooltip : {
-            trigger: 'axis',
-        },
-        legend: {
-            data:['策略收益','基准收益']
-        },
-        toolbox: {
-            show : true,
-            feature : {
-                mark : {show: true},
-                dataView : {show: true, readOnly: false},
-                magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-                restore : {show: true},
-                saveAsImage : {show: true}
-            }
-        },
-        calculable : true,
-        xAxis : [
-            {
-                type : 'category',
-                boundaryGap : false,
-                data : dates,
-
-            }
-        ],
-        yAxis : [
-            {
-                type : 'value',
-                axisLabel : {
-                    formatter: function (value, index) {
-                        var str=Number(value*100).toFixed(2);
-                        str+="%";
-                        return str;
-                    },
-                },
-                
-            }
-        ],
-
-        series : [
-            {
-                name:'策略收益',
-                type:'line',
-                stack: '总量',
-                data:  yieldRateData,
-            },
-
-            {
-                name:'基准收益',
-                type:'line',
-                stack: '总量',
-                data:  standardData,
-            },
-        ]
-    };
-                    
-    $(window).resize(function() {
-        myChart.resize()
-    });
-    myChart.setOption(option)
 }

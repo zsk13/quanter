@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "basePage.html" %}
 
 {% block title %}3K/5K战法{% endblock %}
 
@@ -90,10 +90,13 @@
     var stocks = {{ stocks|safe }};
     var recommends = {{ recommendData|safe }};
     var paraList = {{ paraList|safe }}
+
 </script>
 {% endblock %}
 
 {% block js %}
+
 <script src="../static/js/table.js"></script>
 <script src="../static/js/3k5k.js"></script>
+
 {% endblock %}

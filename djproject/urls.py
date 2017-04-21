@@ -77,13 +77,16 @@ urlpatterns += patterns('quanter.views',
 )
 
 urlpatterns += patterns('quanter.views',
-    (r'^stockpool/$', 'showStock'),
-    (r'^stockpool/showStock$', 'showStock'),
-    (r'^stockpool/searchStock$', 'searchStock'),
-     (r'^stockpool/addStock$', 'addStock'),
-    (r'^stockpool/showStockPool$', 'showStockPool'),
-    (r'^stockpool/deleteStock$', 'deleteStock'),
-    # (r'^backTest/$', 'backTest'),
+    (r'^stockGroup/$', 'showStock'),
+    (r'^stockGroup/showStock$', 'showStock'),
+    (r'^stockGroup/searchStock$', 'searchStock'),
+     (r'^stockGroup/addStock$', 'addStock'),
+    (r'^stockGroup/showStockGroup$', 'showStockGroup'),
+    (r'^stockGroup/deleteStock$', 'deleteStock'),
+    (r'^stockGroup/getStockGroups$', 'getStockGroups'),
+    (r'^stockGroup/addStockGroup$', 'addStockGroup'),
+    (r'^stockGroup/deleteStockGroup$', 'deleteStockGroup'),
+    (r'^stockGroup/manageStockGroups$', 'manageStockGroups'),
 )
 
 urlpatterns += patterns('',

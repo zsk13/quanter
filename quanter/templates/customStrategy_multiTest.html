@@ -9,6 +9,7 @@
     </div>
     <h3>参数设置</h3>
     时间:<input class="date-input"  id="start"   > —— <input type="text"  class="date-input"  id="end"   >
+    <select id = "stockGroupsForTest" class = "form-control" style = "width:100px;height:30px;display: inline;padding:0 0;color: inherit !important;border-color: inherit !important"><select>
     <br>
    <div style = "margin-top:20px">
     买入条件: <input type="text" id="buy"  style = "width:100%">
@@ -29,4 +30,5 @@
 {% block js %}
  {{ block.super }}
 <script src="../static/js/customMultiTest.js"></script>
+<script src="../static/js/stockGroupForTest.js"></script>
 {% endblock %}

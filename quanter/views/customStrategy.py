@@ -34,14 +34,15 @@ def customMultiTestStockPool(request):
     end = request.GET.get('end')
     buy = request.GET.get('buy')
     sell = request.GET.get('sell')
+    groupId = request.GET.get('groupId')
    
     strategy = CustomStrategy(buy,sell)
-    email = request.user.email
-    user = User.objects.get(email=email)
-    stockpool =user.stockpool_set.all()
+
+    stockGroup = StockGroup.objects.get(id=groupId)
+    groupContents = stockGroup.groupcontent_set.all()
 
     result = []
-    for stock in stockpool:
+    for stock in groupContents:
         code = stock.stockCode
         backTest = BackTest(code,start,end,strategy = strategy)
         tempresult = backTest.getSimpleResult()

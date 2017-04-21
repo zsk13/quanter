@@ -3,7 +3,8 @@ function multiTest(){
     var end = $("#end").val();
     var buy = $("#buy").val();
     var sell = $("#sell").val();
-    $.get("/customStrategy/multiTestStockPool?start="+start+"&end="+end+"&buy="+buy+"&sell="+sell,function(data,status){
+    var groupId = $("#stockGroupsForTest").val();
+    $.get("/customStrategy/multiTestStockPool?start="+start+"&end="+end+"&buy="+buy+"&sell="+sell+"&groupId="+groupId,function(data,status){
 
         console.log(data);
         dataarray = []
@@ -32,6 +33,8 @@ function multiTest(){
             width:200
         }],
         data: dataarray
+        })
+        $('#testResult').bootstrapTable("load",dataarray);
     })
-    });
+
 }

@@ -4,7 +4,8 @@ function train(){
     var code = $("#code").val();
     var verifystart = $("#verifystart").val();
     var verifyend = $("#verifyend").val();
-    $.get("/svmStrategy/result?code="+code+"&start="+start+"&end="+end+"&verifystart="+verifystart+"&verifyend="+verifyend,function(data,status){
+    var groupId = $("#stockGroupsForTest").val();
+    $.get("/svmStrategy/result?code="+code+"&start="+start+"&end="+end+"&verifystart="+verifystart+"&verifyend="+verifyend+"&groupId="+groupId,function(data,status){
 
         console.log(data);
         dataarray = []

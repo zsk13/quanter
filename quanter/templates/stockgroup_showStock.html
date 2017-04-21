@@ -1,0 +1,42 @@
+{% extends "stockgroup.html" %}
+
+{% block title %}查看股票{% endblock %}
+
+
+{% block rightContainer %}
+
+    <p class="titleword">搜索股票</p>
+    <div style = "margin-top:40px">
+    股票代码:<input type="text" id="code">
+    <button style = "margin-left:60px" type="button" class="btn btn-primary submit-btn" id="confirm" onclick="searchStock()">搜索</button>
+
+
+    <div class="btn-group dropup" style = "float:right">
+      <button type="button" class="btn btn-primary submit-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">加入股票池 <span class="caret"></span></button>
+      <ul class="dropdown-menu" id = "stockGroupsUL">
+
+      </ul>
+    </div>
+
+    </div>
+
+    <p class="titleword" style = "margin-top:30px">
+        <div>K线展示图</div>
+    </p>
+    <div id="kline" style = "height:300px; margin-bottom: 20px"></div>
+
+{% endblock %}
+
+
+
+{% block datajs %}
+<script type="text/javascript">
+    var rawData = {{ list|safe }};
+</script>
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script src="../static/js/Kline.js"></script>
+<script src="../static/js/showStock.js"></script>
+{% endblock %}

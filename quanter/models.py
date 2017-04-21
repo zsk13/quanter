@@ -73,6 +73,15 @@ class StockPool(models.Model):
     userId = models.ForeignKey(User)
     stockCode =  models.CharField(max_length=50)
 
+class StockGroup(models.Model):
+    id = models.AutoField(primary_key=True)
+    userId = models.ForeignKey(User)
+    groupName = models.CharField(max_length=200)
+
+class GroupContent(models.Model):
+    id = models.AutoField(primary_key=True)
+    groupId = models.ForeignKey(StockGroup)
+    stockCode =  models.CharField(max_length=50)
 
 class stock_basic(models.Model):
     code = models.CharField(max_length=50, primary_key=True)

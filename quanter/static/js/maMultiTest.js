@@ -3,7 +3,8 @@ function multiTest(){
     var end = $("#end").val();
     var m = $("#m").val();
     var n = $("#n").val();
-    $.get("/maStrategy/maMultiTestStockPool?start="+start+"&end="+end+"&m="+m+"&n="+n,function(data,status){
+    var groupId = $("#stockGroupsForTest").val();
+    $.get("/maStrategy/maMultiTestStockPool?start="+start+"&end="+end+"&m="+m+"&n="+n+"&groupId="+groupId,function(data,status){
 
         console.log(data);
         dataarray = []
@@ -32,6 +33,7 @@ function multiTest(){
             width:200
         }],
         data: dataarray
-    })
+        })
+        $('#testResult').bootstrapTable("load",dataarray);
     });
 }

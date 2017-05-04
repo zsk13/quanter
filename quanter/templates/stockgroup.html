@@ -1,0 +1,39 @@
+{% extends "basePage.html" %}
+
+{% block title %}股票池{% endblock %}
+
+{% block container %}
+ <div class="container mycontainer">
+    <div class = "col-md-4">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="/stockGroup/showStock">查看股票</a></li>
+            <li role="presentation"><a href="/stockGroup/manageStockGroups">管理股票组</a></li>
+            <li role="presentation">
+
+
+                <a class="dropdown" style="padding-top: 0px;padding-bottom: 0px">
+                    <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    查看股票组
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="groupsUL">
+                  </ul>
+                </a>
+
+
+
+            </li>
+
+
+        </ul>
+    </div>
+    <div class = "col-md-8">
+
+    {% block rightContainer %}
+    {% endblock %}
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="../static/js/manageStockPool.js"></script>
+{% endblock %}

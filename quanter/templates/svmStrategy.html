@@ -12,14 +12,19 @@
     </div>
     <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
         <h2>参数设置</h2>
-        <div  style="margin-bottom:30px">
+        <div  style="">
         时间:<input class="date-input"  id="start"   > —— <input type="text"  class="date-input"  id="end"   >
         训练股票:<input type="text" id="code" class="stock-input">
-        <br>
-        验证时间:<input class="date-input"  id="verifystart"   > —— <input type="text"  class="date-input"  id="verifyend"   >
-        <button style = "margin-top:20px;margin-left: 100px" type="button" class="btn btn-primary submit-btn" id="confirm" onclick="train()">训练</button>
+        
         </div>
-
+        <br>
+        <div>
+        验证时间:<input class="date-input"  id="verifystart"   > —— <input type="text"  class="date-input"  id="verifyend"   >
+        </div>
+        <div style="margin-top:20px;">
+            验证范围:<select id = "stockGroupsForTest" class = "form-control" style = "width:100px;height:30px;display: inline;padding:0 0;color: inherit !important;border-color: inherit !important"><select>
+        <button style = "margin-left: 100px" type="button" class="btn btn-primary submit-btn" id="confirm" onclick="train()">训练</button>
+    </div>
 
     </div>
     
@@ -54,4 +59,5 @@
 <script src="../static/js/testdate.js"></script> 
 <script src="../static/js/svm.js"></script> 
 <script src="../static/js/backTest.js"></script>
+<script src="../static/js/stockGroupForTest.js"></script>
 {% endblock %}

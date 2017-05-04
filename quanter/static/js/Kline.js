@@ -1,6 +1,6 @@
 function searchStock(){
     var code = $("#code").val();
-    $.get("/stockpool/searchStock?code="+code,function(data,status){
+    $.get("/stockGroup/searchStock?code="+code,function(data,status){
         
         var myChart2 = echarts.getInstanceByDom(document.getElementById('kline'));
 

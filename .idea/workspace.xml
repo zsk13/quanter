@@ -2,18 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2da60f5f-6263-4433-9cd5-93e17f8b40ee" name="Default" comment="">
-      <change type="DELETED" beforePath="E:\FinalDesign\project\cl\000001_2014-04-20_2015-04-20" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cl/000001_2014-04-21_2015-04-21" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cl/000001_2015-04-20_2016-04-20" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quanter/static/js/showStock.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quanter/static/js/stockGroup.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quanter/static/js/stockGroupForTest.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quanter/templates/stockgroup.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quanter/templates/stockgroup_manageStockGroups.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quanter/templates/stockgroup_showStock.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quanter/templates/stockgroup_showStockGroup.html" />
+      <change type="DELETED" beforePath="E:\FinalDesign\project\quanter\templates\stockpool.html" afterPath="" />
+      <change type="DELETED" beforePath="E:\FinalDesign\project\quanter\templates\stockpool_showStock.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/static/js/Kline.js" afterPath="$PROJECT_DIR$/quanter/static/js/Kline.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/static/css/accounts.css" afterPath="$PROJECT_DIR$/quanter/static/css/accounts.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/templates/base.html" afterPath="$PROJECT_DIR$/users/templates/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/templates/basePage.html" afterPath="$PROJECT_DIR$/quanter/templates/basePage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/jogepsStrategy.py" afterPath="$PROJECT_DIR$/quanter/jogepsStrategy.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/strategy.py" afterPath="$PROJECT_DIR$/quanter/strategy.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/static/js/customMultiTest.js" afterPath="$PROJECT_DIR$/quanter/static/js/customMultiTest.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/views/customStrategy.py" afterPath="$PROJECT_DIR$/quanter/views/customStrategy.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/templates/customStrategy_multiTest.html" afterPath="$PROJECT_DIR$/quanter/templates/customStrategy_multiTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/static/js/maMultiTest.js" afterPath="$PROJECT_DIR$/quanter/static/js/maMultiTest.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/views/maStrategy.py" afterPath="$PROJECT_DIR$/quanter/views/maStrategy.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/templates/maStrategy_multiTest.html" afterPath="$PROJECT_DIR$/quanter/templates/maStrategy_multiTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/static/js/manageStockPool.js" afterPath="$PROJECT_DIR$/quanter/static/js/manageStockPool.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/models.py" afterPath="$PROJECT_DIR$/quanter/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/static/js/stockpool.js" afterPath="$PROJECT_DIR$/quanter/static/js/stockpool.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/views/stockpool.py" afterPath="$PROJECT_DIR$/quanter/views/stockpool.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/static/js/svm.js" afterPath="$PROJECT_DIR$/quanter/static/js/svm.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/svm.py" afterPath="$PROJECT_DIR$/quanter/svm.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/templates/svmStrategy.html" afterPath="$PROJECT_DIR$/quanter/templates/svmStrategy.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/views/svmStrategy.py" afterPath="$PROJECT_DIR$/quanter/views/svmStrategy.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/views/threek.py" afterPath="$PROJECT_DIR$/quanter/views/threek.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quanter/threekStrategy.py" afterPath="$PROJECT_DIR$/quanter/threekStrategy.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djproject/urls.py" afterPath="$PROJECT_DIR$/djproject/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="E:\FinalDesign\project\quanter\templates\stockpool_showStockPool.html" afterPath="$PROJECT_DIR$/quanter/templates/stockgroup_manageStockGroup.html" />
     </list>
     <ignored path="project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,14 +53,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/djproject/urls.py">
+      <file leaf-file-name="accounts.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/quanter/static/css/accounts.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36211032">
-              <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.36930457">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,7 +98,6 @@
         <option value="$PROJECT_DIR$/quanter/svm.py" />
         <option value="$PROJECT_DIR$/quanter/strategy.py" />
         <option value="$PROJECT_DIR$/quanter/views/svmStrategy.py" />
-        <option value="$PROJECT_DIR$/quanter/static/css/accounts.css" />
         <option value="$PROJECT_DIR$/quanter/threekStrategy.py" />
         <option value="$PROJECT_DIR$/quanter/views/threek.py" />
         <option value="$PROJECT_DIR$/quanter/jogepsStrategy.py" />
@@ -90,13 +106,14 @@
         <option value="$PROJECT_DIR$/quanter/templates/jogeps.html" />
         <option value="$PROJECT_DIR$/quanter/static/js/jogeps.js" />
         <option value="$PROJECT_DIR$/quanter/static/js/gap.js" />
-        <option value="$PROJECT_DIR$/djproject/urls.py" />
         <option value="$PROJECT_DIR$/quanter/views/gap.py" />
         <option value="$PROJECT_DIR$/quanter/templates/gap.html" />
         <option value="$PROJECT_DIR$/quanter/templates/stockGroup.html" />
         <option value="$PROJECT_DIR$/quanter/formStrategy.py" />
         <option value="$PROJECT_DIR$/quanter/gapStrategy.py" />
         <option value="$PROJECT_DIR$/users/templates/base.html" />
+        <option value="$PROJECT_DIR$/djproject/urls.py" />
+        <option value="$PROJECT_DIR$/quanter/static/css/accounts.css" />
       </list>
     </option>
   </component>
@@ -147,20 +164,6 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="project">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="project">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="quanter">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -413,7 +416,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17782739" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -769,20 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quanter/static/css/accounts.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quanter/templates/stockpool.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09544469">
@@ -799,11 +788,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/djproject/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36211032">
-          <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
+        <state vertical-scroll-proportion="-1.9544364">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quanter/static/css/accounts.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36930457">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

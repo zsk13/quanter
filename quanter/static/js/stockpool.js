@@ -9,8 +9,12 @@ $(function() {
 
             code = code[0].id;
             console.log(dataarray);
+            var param =  window.location.search;
+            console.log(param);
+            var groupId = param.split('=')[1];
+            console.log(groupId);
             $('#tablePool').bootstrapTable("load",dataarray);
-            $.get("/stockpool/deleteStock?code="+code,function(data,status){
+            $.get("/stockGroup/deleteStock?code="+code+"&groupId="+groupId,function(data,status){
                 console.log(data);
             })
 

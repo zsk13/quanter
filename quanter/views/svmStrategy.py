@@ -44,6 +44,7 @@ def svm_training(request):
     # return HttpResponse(json.dumps({'resultCode':resultCode,'resultName':resultName}),content_type="application/json") 
 
 def svm_result(request):
+    groupId = request.GET.get('groupId')
     code = request.GET.get('code')
     start = request.GET.get('start')
     end = request.GET.get('end')
@@ -51,12 +52,11 @@ def svm_result(request):
     verifyend = request.GET.get('verifyend')
     strategy = SVMStrategy(code+"_"+start+"_"+end,code,start,end)
 
-    email = request.user.email
-    user = User.objects.get(email=email)
-    stockpool =user.stockpool_set.all()
+    stockGroup = StockGroup.objects.get(id=groupId)
+    groupContents = stockGroup.groupcontent_set.all()
 
     result = []
-    for stock in stockpool:
+    for stock in groupContents:
         code = stock.stockCode
         backTest = BackTest(code,verifystart,verifyend,strategy = strategy)
         tempresult = backTest.getSimpleResult()

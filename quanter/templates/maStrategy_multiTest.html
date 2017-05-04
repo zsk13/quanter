@@ -10,10 +10,12 @@
     </div>
     <h3>参数设置</h3>
     时间:<input class="date-input"  id="start"   > —— <input type="text"  class="date-input"  id="end"   >
+    <select id = "stockGroupsForTest" class = "form-control" style = "width:100px;height:30px;display: inline;padding:0 0;color: inherit !important;border-color: inherit !important"><select>
     <br>
     <div style = "margin-top:20px">
     n: <input type="text" id="n" class="stock-input" style = "margin-left:35px">
     m: <input type="text" id="m" class="stock-input" style = "margin-left:20px">
+    
     <button style = "margin-left:100px" type="button" class="btn btn-primary submit-btn" id="multiTest" onclick="multiTest()">批量回测</button>   
     </div>
     <h3>回测结果</h3>
@@ -26,4 +28,5 @@
 {% block js %}
  {{ block.super }}
 <script src="../static/js/maMultiTest.js"></script>
+<script src="../static/js/stockGroupForTest.js"></script>
 {% endblock %}

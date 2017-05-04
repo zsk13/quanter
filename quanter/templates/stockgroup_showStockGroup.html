@@ -1,0 +1,27 @@
+{% extends "stockgroup.html" %}
+
+{% block title %}查看股票组{% endblock %}
+
+
+{% block rightContainer %}
+
+    <p class="titleword">股票组</p>
+
+<div style = " margin-bottom: 300px;width:400px">
+    <div id = "tablePool" style = "width:400px"></div>
+</div>
+{% endblock %}
+
+
+
+{% block datajs %}
+<script type="text/javascript">
+    var list = {{ list|safe }};
+    console.log(list);
+</script>
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script src="../static/js/stockpool.js"></script>
+{% endblock %}

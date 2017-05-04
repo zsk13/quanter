@@ -4,11 +4,11 @@ from django.shortcuts import render_to_response
 from quanter.models import *
 from quanter.forms import *
 import json
-from quanter.threekStrategy import ThreekStrategy,KLineHelper
+from quanter.jogepsStrategy import JogepsStrategy,JogepsHelper
 
 import datetime
 
-def show_3k5k(request,code='SH603999'):
+def show_jogeps(request,code='SH603999'):
     stock = Stock.objects.get(code=code)
     stockData = []
 
@@ -19,59 +19,56 @@ def show_3k5k(request,code='SH603999'):
     rawData = []
     for dayData in dayDatas:
         rawData.append([str(dayData.date),0])
-    
-    return render_to_response("3k5k.html",{
+
+    return render_to_response("jogeps.html",{
             'list': json.dumps(rawData),
             'stocks': json.dumps(stockData),
             'recommendData': json.dumps(recommendData),
             'paraList':json.dumps(paraList)
     })
-def backTest_3k5k(request):
+
+def backTest_jogeps(request):
     start = request.GET.get('start')
     end = request.GET.get('end')
     long = request.GET.get('long')
     short = request.GET.get('short')
-    mid = request.GET.get('mid')
-    mini = request.GET.get('mini')
-    paraList = {'long':long,'short':short,'mid':mid,'mini':mini}
+    paraList = {'long':long,'short':short}
     idList_str = request.GET.get('idList')
 
     idList = idList_str.split(',')
 
-    threek = ThreekStrategy('3k5k')
-    klh = KLineHelper(paraList)
-    threek.setPara("2016-01-01","2016-03-05")
-    threek.setHelper(klh)
-    profitRate_day = threek.autobuy(idList)
+    jogeps = JogepsStrategy('jogeps')
+    jgh = JogepsHelper(paraList)
+    jogeps.setPara("2016-01-01","2016-03-05")
+    jogeps.setHelper(jgh)
+    profitRate_day = jogeps.autobuy(idList)
 
     return HttpResponse(json.dumps({'profitRate_day':profitRate_day}),content_type="application/json")
 
     #return HttpResponse(json.dumps({'idList':idList}),content_type="application/json")
 
 def getParaList():
-    threek = ThreekStrategy('3k5k')
-    paraList = threek.getRecommendPara()
+    jogeps = JogepsStrategy('jogeps')
+    paraList = jogeps.getRecommendPara()
     return paraList
 
-def storeRecommendStocks_3k5k(request):
+def storeRecommendStocks_jogeps(request):
     start = request.GET.get('start')
     end = request.GET.get('end')
     long = request.GET.get('long')
     short = request.GET.get('short')
-    mid = request.GET.get('mid')
-    mini = request.GET.get('mini')
-    paraList = {'long':long,'short':short,'mid':mid,'mini':mini}
-    threek = ThreekStrategy('3k5k')
-    klh = KLineHelper(paraList)
-    threek.setHelper(klh)
+    paraList = {'long':long,'short':short}
+    jogeps = JogepsStrategy('jogeps')
+    jgh = JogepsHelper(paraList)
+    jogeps.setHelper(jgh)
 
-    threek.storeRecommendStock(start,end)
+    jogeps.storeRecommendStock(start,end)
 
     #return HttpResponse(threek.storeRecommendStock(paraList,start,end))
 
 def getRecommendStocks():
-    threek = ThreekStrategy('3k5k')
-    profitRateData = threek.getRecommendStock()
+    jogeps = JogepsStrategy('jogeps')
+    profitRateData = jogeps.getRecommendStock()
     recommendData = []
     for prd in profitRateData:
         st = prd.stock
@@ -79,16 +76,15 @@ def getRecommendStocks():
 
     return recommendData
 
-def getRecord_3k5k(request):
+def getRecord_jogeps(request):
     start = request.GET.get('start')
     end = request.GET.get('end')
     long = request.GET.get('long')
     short = request.GET.get('short')
-    mid = request.GET.get('mid')
-    mini = request.GET.get('mini')
-    paraList = {'long':long,'short':short,'mid':mid,'mini':mini}
-    threek = ThreekStrategy('3k5k')
-    klh = KLineHelper(paraList)
-    threek.setHelper(klh)
+    paraList = {'long':long,'short':short}
+    jogeps = JogepsStrategy('jogeps')
+    jgh = JogepsHelper(paraList)
+    jogeps.setHelper(jgh)
 
-    return HttpResponse(threek.storeRecommendStock(start,end))
+    return HttpResponse(jogeps.storeRecommendStock(start,end))
+

@@ -28,11 +28,29 @@ urlpatterns += patterns('quanter.views.login',
 )
 
 
-urlpatterns += patterns('quanter.views',
-    (r'^3k5k/$', 'show'),
+urlpatterns += patterns('quanter.views.threek',
+    url(r'^3k5k/$', 'show_3k5k'),
     url(r'^3k5k/backTest$', 'backTest_3k5k'),
-    url(r'^3k5k/getrecord$', 'getRecord'),
-    url(r'^3k5k/storeRecommendStocks$', 'storeRecommendStocks'),
+    url(r'^3k5k/getrecord$', 'getRecord_3k5k'),
+    url(r'^3k5k/storeRecommendStocks$', 'storeRecommendStocks_3k5k'),
+
+)
+
+urlpatterns += patterns('quanter.views.jogeps',
+
+    url(r'^jogeps/$', 'show_jogeps'),
+    url(r'^jogeps/backTest$', 'backTest_jogeps'),
+    url(r'^jogeps/getrecord$', 'getRecord_jogeps'),
+    url(r'^jogeps/storeRecommendStocks$', 'storeRecommendStocks_jogeps'),
+
+)
+
+urlpatterns += patterns('quanter.views.gap',
+
+    url(r'^gap/$', 'show_gap'),
+    url(r'^gap/backTest$', 'backTest_gap'),
+    url(r'^gap/getrecord$', 'getRecord_gap'),
+    url(r'^gap/storeRecommendStocks$', 'storeRecommendStocks_gap'),
 
 )
 

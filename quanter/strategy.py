@@ -1,7 +1,7 @@
 import pandas as pd
 from stockIndex import StockIndex
 import numpy as np
-from sklearn import svm
+# from sklearn import svm
 from quanter.stockdata import *
 from quanter.svm import *
 import pickle

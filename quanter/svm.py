@@ -5,9 +5,9 @@ import numpy as np
 from sqlalchemy import create_engine
 from models import *
 from  datetime  import  *  
-from sklearn.model_selection import GridSearchCV
-from sklearn.decomposition import PCA
-from sklearn import preprocessing 
+# from sklearn.model_selection import GridSearchCV
+# from sklearn.decomposition import PCA
+# from sklearn import preprocessing
 
 # class SVMStrategy(object):
 #     def __init__(self):

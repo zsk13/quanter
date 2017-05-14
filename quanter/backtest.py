@@ -34,7 +34,5 @@ class BackTest(object):
         return jsonData
 
     def getSimpleResult(self):
-        capital = self.trade.trade_tracing()
-        if len(capital) == 0:
-            return 0
-        return capital['yieldRate'][-1]
+        rate = self.trade.getSuccessRate()
+        return rate

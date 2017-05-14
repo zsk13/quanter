@@ -76,11 +76,9 @@ class SVMStrategy(Strategy):
         df = service.getStockData(self.code,start = self.start,end=self.end)
         st = StockIndex(df["close"],df["open"],df["high"],df["low"],df["volume"])
         x = st.getNeedData()
-        x = x[10:]
         x = x/100
         y = df['close'].diff()>0
         y = y*2-1
-        y = y[10:]
         g = GridSearch()
         cl = g.getClassifier(x[:-1],y[1:])
         f = open('cl/'+self.clName,'wb')
@@ -95,17 +93,9 @@ class SVMStrategy(Strategy):
 
     def gen_signal(self,bar):
         st = super(SVMStrategy, self).get_stockIndex(bar['close'],bar['open'],bar['high'],bar['low'])
-        bar = bar[10:]
         df = st.getNeedData()
-        df = df[10:]
         df = df/100
-        y = bar['close'].diff()>0
-        y = y*2-1
 
-        # clf = svm.SVC()
-        # trainNum = int(float(self.trainRatio) * len(df))
-        # clf.fit(df[:trainNum], y[1:trainNum+1])
-        # yResult = clf.predict(df[trainNum:])
         if self.code is None:
             clf = self.get_clf()
         else:

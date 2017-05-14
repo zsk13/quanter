@@ -11,13 +11,10 @@ class StockDataFactory(object):
 
     @classmethod
     def getStockDataServiceByStartTime(cls,start):
-        return StockDataServiceDatabaseImpl()
-        # now = time.strftime("%Y-%m-%d")
-        # threeYearAgo = str(int(now[:4]) - 3) + now[4:]
-        # if start>threeYearAgo:
-        #     return StockDataServiceDatabaseImpl()
-        # else:
-        #     return StockDataServiceTSImpl()
+        if start>"2014-01-01":
+            return StockDataServiceDatabaseImpl()
+        else:
+            return StockDataServiceTSImpl()
 
 class StockDataService(object):
     def getStockData(self,code,start = None,end =None,index = False):

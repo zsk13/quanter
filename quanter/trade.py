@@ -16,7 +16,6 @@ class Trade(object):
             capital['yieldRate'] = 0
             return capital
         flag = self.strategy.gen_signal(self.bars)
-        signal = flag.diff().fillna(flag[0])
         amounts = pd.Series(index = flag.index)
         total = pd.Series(index = flag.index)
         index = flag.index
@@ -40,12 +39,16 @@ class Trade(object):
             amounts[i] = holdNum
             total[i] = tempTotal
 
-        # tradeAmounts = amounts.diff().fillna(amounts[0])
-
         capital = pd.DataFrame(index = flag.index)
-        # capital['hold'] = amounts*self.bars['close']
-        # capital['rest'] = self.init_capital - (self.trade_positions()*self.bars['close']).cumsum()
         capital['total'] = total
-        # capital['return'] = capital['total'].pct_change().fillna(capital['total'][0]/self.init_capital-1)
         capital['yieldRate'] = (capital['total'] - self.init_capital)/self.init_capital
         return capital
+
+    def getSuccessRate(self):
+        if len(self.bars)==0:
+            return 0
+        flag = self.strategy.gen_signal(self.bars)
+        y = self.bars['close'].diff()>0
+        y = y*2-1
+        rate = float(sum(flag[:-1]==y[1:]))/(len(flag)-1)
+        return rate

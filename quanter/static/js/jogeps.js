@@ -1,6 +1,9 @@
 $(function() {
     $("#long").val(paraList['long']);
     $("#short").val(paraList['short']);
+    for(var i = 0;i<stockGroups.length;i++){
+        $("#selectGroup").append("<option value="+stockGroups[i]['id']+">"+stockGroups[i]['name']+"</option>");
+    }
 
     var myChart = echarts.init(document.getElementById('kline'));
     var dates = rawData.map(function(item) {
@@ -15,7 +18,7 @@ $(function() {
                 trigger: 'axis'
             },
         legend: {
-                data:['收益率(%)']
+                data:['持有现值（元）']
             },
         grid: {
                 left: '3%',
@@ -38,7 +41,7 @@ $(function() {
             },
         series: [
                 {
-                    name:'收益率(%)',
+                    name:'持有现值（元）',
                     type:'line',
                     data:profits
                 },
@@ -50,6 +53,57 @@ $(function() {
     myChart.setOption(option);
 });
 
+function addInputStock(){
+    st_code = $('#st_code').val();
+    $.get("/jogeps/findStock?st_code="+st_code,function(data,status){
+        st_info = data['st_info']
+        newstocks = []
+        newstocks.push({id:st_info['code'],name:st_info['name']})
+        $('#tablepool').bootstrapTable('append', newstocks)
+    })
+}
+
+function filterStocks(){
+    var groupId = $("#selectGroup").val()
+    var startDate = $("#start").val()
+    var endData = $("#end").val()
+    var long = $("#long").val()
+    var short = $("#short").val()
+
+    //加载icon
+    var opts = {
+      lines: 13 // The number of lines to draw
+    , length: 28 // The length of each line
+    , width: 14 // The line thickness
+    , radius: 42 // The radius of the inner circle
+    , scale: 1 // Scales overall size of the spinner
+    , corners: 1 // Corner roundness (0..1)
+    , color: '#000' // #rgb or #rrggbb or array of colors
+    , opacity: 0.25 // Opacity of the lines
+    , rotate: 0 // The rotation offset
+    , direction: 1 // 1: clockwise, -1: counterclockwise
+    , speed: 1 // Rounds per second
+    , trail: 60 // Afterglow percentage
+    , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+    , zIndex: 2e9 // The z-index (defaults to 2000000000)
+    , className: 'spinner' // The CSS class to assign to the spinner
+    , top: '50%' // Top position relative to parent
+    , left: '50%' // Left position relative to parent
+    , shadow: false // Whether to render a shadow
+    , hwaccel: false // Whether to use hardware acceleration
+    , position: 'absolute' // Element positioning
+    }
+    var target = document.getElementById('table')
+    var spinner = new Spinner(opts).spin(target);
+
+    $.get("/jogeps/filterStocks?start="+start+"&end="+end+"&long="+long+"&short="+short+"&groupId="+groupId,function(data,status){
+        spinner.spin();
+        recommendData_new = data['recommendData'];
+        $('#table').bootstrapTable('load', recommendData_new)
+    });
+
+
+}
 function addStocks(){
     selected_list = $('#table').bootstrapTable('getSelections');
     newstocks = []
@@ -65,6 +119,7 @@ function addStocks(){
 function backTest(){
     var startDate = $("#start").val()
     var endDate = $("#end").val()
+    var iniMoney = $("#ini_money").val()
     var long = $("#long").val()
     var short = $("#short").val()
 
@@ -100,7 +155,7 @@ function backTest(){
     }
     var target = document.getElementById('kline')
     var spinner = new Spinner(opts).spin(target);
-    $.get("/jogeps/backTest?start="+start+"&end="+end+"&long="+long+"&short="+short+"&idList="+idList,function(data,status){
+    $.get("/jogeps/backTest?start="+start+"&end="+end+"&iniMoney="+iniMoney+"&long="+long+"&short="+short+"&idList="+idList,function(data,status){
         spinner.spin();
         rawData = data['profitRate_day'];
         var myChart = echarts.init(document.getElementById('kline'));
@@ -116,7 +171,7 @@ function backTest(){
                 trigger: 'axis'
             },
             legend: {
-                data:['收益率(%)']
+                data:['持有现值（元）']
             },
             grid: {
                 left: '3%',
@@ -139,7 +194,7 @@ function backTest(){
             },
             series: [
                 {
-                    name:'收益率(%)',
+                    name:'持有现值（元）',
                     type:'line',
                     data:profits
                 },

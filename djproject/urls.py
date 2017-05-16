@@ -23,7 +23,7 @@ urlpatterns += patterns('',
 )
 
 urlpatterns += patterns('quanter.views.login',
-    (r'^index$', 'index'),
+    (r'^index/$', 'index'),
     (r'^logininfo$','logininfo')
 )
 
@@ -33,6 +33,8 @@ urlpatterns += patterns('quanter.views.threek',
     url(r'^3k5k/backTest$', 'backTest_3k5k'),
     url(r'^3k5k/getrecord$', 'getRecord_3k5k'),
     url(r'^3k5k/storeRecommendStocks$', 'storeRecommendStocks_3k5k'),
+    url(r'^3k5k/filterStocks$', 'filterStocks_3k5k'),
+    url(r'^3k5k/findStock$','findStock_3k5k'),
 
 )
 
@@ -42,6 +44,8 @@ urlpatterns += patterns('quanter.views.jogeps',
     url(r'^jogeps/backTest$', 'backTest_jogeps'),
     url(r'^jogeps/getrecord$', 'getRecord_jogeps'),
     url(r'^jogeps/storeRecommendStocks$', 'storeRecommendStocks_jogeps'),
+    url(r'^jogeps/filterStocks$', 'filterStocks_jogeps'),
+    url(r'^jogeps/findStock$','findStock_jogeps'),
 
 )
 
@@ -51,6 +55,8 @@ urlpatterns += patterns('quanter.views.gap',
     url(r'^gap/backTest$', 'backTest_gap'),
     url(r'^gap/getrecord$', 'getRecord_gap'),
     url(r'^gap/storeRecommendStocks$', 'storeRecommendStocks_gap'),
+    url(r'^gap/filterStocks$', 'filterStocks_gap'),
+    url(r'^gap/findStock$','findStock_gap'),
 
 )
 

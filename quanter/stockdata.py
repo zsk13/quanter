@@ -55,7 +55,7 @@ class StockDataServiceDatabaseImpl(StockDataService):
             dayDatas = stock.daydata_set.order_by('date')
         else:
             start = datetime.strptime(start, "%Y-%m-%d")
-            end = datetime.strptime(start, "%Y-%m-%d")
+            end = datetime.strptime(end, "%Y-%m-%d")
             dayDatas = stock.dayData_set.filter(date__gte=start).filter(date__lte=end).order_by('date')
         
         return dayDatas

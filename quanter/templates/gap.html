@@ -10,10 +10,8 @@
         <div class="col-md-5 col-lg-5  col-md-offset-1 col-lg-offset-1 col-xs-12 col-sm-12"  >
             <p class="titleword" id="title">缺口策略</p>
             <p>善用缺口，预测走势</p>
-            <div style="margin-bottom: 10px"> 股票范围: <select class="selectpicker  dis-con " title="您预设的股票组">
-                <option>自定义股票组1</option>
-                <option>自定义股票组2</option>
-                <option>自定义股票组3</option>
+            <div style="margin-bottom: 10px"> 股票范围: <select id="selectGroup" class="selectpicker  dis-con " title="您预设的股票组">
+
             </select></div>
 
         <div>
@@ -27,12 +25,14 @@
 
         </div >
 
-        <div class="col-md-6 col-lg-6" >
+        <div class="col-md-5 col-lg-5" >
             <p  class="titleword" style="clear: both">参数设置</p>
             缺口涨跌幅定义:
             <input type="text" class="form-control" id="breach" ><br>
             <!--<a href="/gap/storeRecommendStocks?start=2016-01-01&end=2016-12-31&breach=0.01"><button type="button" class="btn btn-primary" id="check" >检验</button></a>-->
         </div>
+        <button type = "button" class="btn btn-default" data-toggle="modal" data-target="#myModal">策略描述</button>
+        <button type="button" class="btn btn-primary" id="filtrate" style="float:right;margin-right:1.5%" onclick="filterStocks()">筛选股票</button>
     </div>
 
 
@@ -46,8 +46,11 @@
         </div>
         <div class="col-md-6 col-lg-6  col-md-offset-1 col-lg-offset-1 col-xs-12 col-sm-12">
             <p class="titleword">股票池</p>
+            <div style="float:left">
+            股票代码：
+            <input type="text" class="form-control" id="st_code"><br></div>
+            <button type="button" class="btn btn-primary" style="float:right;" id="addInputStock" onclick = "addInputStock()" >添加股票</button>
             <table id="tablepool"></table>
-            <button type="button" class="btn btn-primary" id="loopback" onclick = "backTest()">回测</button>
         </div>
         <!--
         <div class="col-md-4 col-lg-4  col-md-offset-1 col-lg-offset-1 col-xs-12 col-sm-12"  >
@@ -69,13 +72,49 @@
 
 
     <div class="container mycontainer mid-div"  >
-        <div class="col-md-12 col-lg-12   col-xs-12 col-sm-12" id="kdiv">
+        <div class="col-md-4 col-lg-4 col-md-offset-1">
+            <p class="titleword" >策略回测</p>
+            <div style="height:40px"></div>
+            <div>
+                开始时间:
+                <input type="text"  class="form-control "  id="loop_start"   ><br>
+                结束时间:
+                <input type="text"  class="form-control "  id="loop_end"   ><br>
+                初始资金:
+                <input type="text"  class="form-control "  id="ini_money"  value="1000000" ><br>
+
+            </div>
+            <div style="height:150px"></div>
+            <button type="button" class="btn btn-primary" id="loopback" onclick = "backTest()" style="margin-right:5%">回测</button>
+
+        </div >
+
+        <div class="col-md-7 col-lg-7 col-xs-7 col-sm-7" id="kdiv">
             <p class="titleword">回测展示图</p>
             <div id="kline" ></div>
 
         </div >
 
     </div>
+
+<!-- 策略定义（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					缺口策略描述
+				</h4>
+			</div>
+			<div class="modal-body">
+                缺口是指股价在快速大幅变动中有一段价格没有任何交易，显示在股价趋势图上是一个真空区域，这个区域称之“缺口”，通常又称为跳空。从缺口发生的部位大小，可以预测走势的强弱，确定是突破，还是已到趋势之尽头。它是研判各种形态时最有力的辅助材料。缺口策略利用了缺口的跳空方向，配合股价趋势和成交量，来判定当前趋势下是否会出现反转。<br/>涉及的参数包括定义缺口的涨跌幅，即跳空的涨跌幅超过多少可以认为是缺口。
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
 {% endblock %}
 
 {% block datajs %}
@@ -84,6 +123,7 @@
     var stocks = {{ stocks|safe }};
     var recommends = {{ recommendData|safe }};
     var paraList = {{ paraList|safe }}
+    var stockGroups = {{ stockGroups|safe }};
 
 </script>
 {% endblock %}

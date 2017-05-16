@@ -7,7 +7,7 @@ from quanter.models import *
 from users.models import *
 
 
-def showStock(request, code = "300002"):
+def showStock(request, code = "SH603999"):
     # start = (datetime.datetime.now() - datetime.timedelta(days = 100)).strftime("%Y-%m-%d")
     # end = datetime.datetime.now().strftime("%Y-%m-%d")
     dataService = StockDataFactory.getStockDataService()

@@ -8,7 +8,7 @@ class GapStrategy(FormStrategy):
         super(GapStrategy, self).__init__(type)
 
     def getRecommendPara(self):
-        paraList = {'breach':0.01}
+        paraList = {'breach':0.0001}
         return paraList
 
 class GapHelper(Helper):
@@ -32,11 +32,11 @@ class GapHelper(Helper):
             and max(dataList[1]['daydata'].close,dataList[1]['daydata'].open) < dataList[0]['madata'].ma20:
             level = 1 +self.levelOfVolume(date,index)
             res.append(level)
-        '''
+
         if index >40 and self.hasThirdDownBreach(date) :
             level = 1+self.levelOfVolume(date,index)
             res.append(level)
-        '''
+        
 
         res.append(0)
         return res

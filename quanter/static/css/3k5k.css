@@ -9,10 +9,10 @@
     margin-bottom: 20px;
 }
 
-#periodConfirm,#check{
+#periodConfirm{
      float: right;margin-right: 33%
  }
- #addStock,#loopback{
+#addStock,#loopback{
      float: right;margin-top: 10px
  }
 @media (max-width: 768px) {

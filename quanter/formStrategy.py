@@ -13,11 +13,11 @@ class FormStrategy(object):
         stocks_recommend = ProfitRateData.objects.filter(strategy = self.type).order_by('-profitRate')[0:9]
         return stocks_recommend
 
-    def setPara(self,start,end):
+    def setPara(self,start,end,iniMoney):
         self.line = -0.08
         self.start = start
         self.end = end
-        self.initial_money = 1000000.0
+        self.initial_money = iniMoney
 
     def setHelper(self,helper):
         self.helper = helper
@@ -86,11 +86,21 @@ class FormStrategy(object):
                 stocks_hold.append({'code':order['st_code'],'price':order['price'],'number':number})
 
             index_date += 1
-            profitRate_day.append([str(date),(money- self.initial_money)/self.initial_money*100])
+            #计算目前持有股票的现值
+            current_stockValue = 0
+            for st in stocks_hold:
+                day_data = stock_dayDatas[st['code']].get(date = date)
+                current_stockValue += day_data.close*st['number']
 
-        return profitRate_day
+            current_totalValue = current_stockValue +money
+
+            profitRate_day.append([str(date),current_totalValue])
+
+        #return profitRate_day
         #return (money- self.initial_money)/self.initial_money*100
         #return trade_record
+        result = {'profitRate':(money- self.initial_money)/self.initial_money*100,'profitRate_day':profitRate_day,'trade_record':trade_record}
+        return result
 
     def storeRecommendStock(self,start,end):
         self.line = -0.08
@@ -99,13 +109,13 @@ class FormStrategy(object):
         self.initial_money = 1000000.0
 
 
-        stockList = Stock.objects.filter(isInPool = 1)[0:10]
+        stockList = Stock.objects.filter(isInPool = 1)[1:10]
 
 
         for stock in stockList:
             codeArea = [stock.code]
 
-            profit_rate = self.autobuy(codeArea)
+            profit_rate = self.autobuy(codeArea)['profitRate']
             profitRateData = ProfitRateData()
             profitRateData.stock = stock
             profitRateData.year = int(start[0:4])
@@ -113,11 +123,14 @@ class FormStrategy(object):
             profitRateData.strategy = self.type
             profitRateData.save()
 
-        '''
-        codeArea = ['SH600008']
-        trade_record = self.autobuy(codeArea)
+    def getTradeRecord(self,start,end):
+        self.line = -0.08
+        self.start = start
+        self.end = end
+        self.initial_money = 1000000.0
+        codeArea = ['SH600012']
+        trade_record = self.autobuy(codeArea)['trade_record']
         return trade_record
-        '''
 
 class Helper(object):
     def __init__(self):
